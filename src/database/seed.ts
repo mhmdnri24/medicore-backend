@@ -16,7 +16,7 @@ const prisma = new PrismaClient({ adapter });
 
 async function main() {
 
-  // await prisma.$executeRaw`TRUNCATE TABLE "User", "Role", "UserRole", "MenuPermission", "RoleMenuPermission" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "users", "roles", "user_roles", "menu_permissions", "role_menu_permissions" RESTART IDENTITY CASCADE`;
 
 
   const role = await prisma.role.upsert({
@@ -55,7 +55,8 @@ async function main() {
     },
   });
 
-  const parentMenu = [{'Main':[
+  const parentMenu = [
+    {'Main':[
     {
       parentId: null,
       name: 'view:dashboard',
@@ -80,17 +81,24 @@ async function main() {
   ]}, { 'Master Data': [] }, { 'Settings': [] }];
 
   for (const parent of parentMenu) {
+    // console.log(Object.values(parent)[0], 'parent')
+    // console.log(Object.values(parent)[0].length, 'parent')
     const labelMenu = await prisma.menuPermission.create({
       data: {
-        name: Array.isArray(parent) ? Object.keys(parent)[0] : '',
+        name:  Array.isArray( Object.values(parent)[0]) ? Object.keys(parent)[0] : '',
         description: '',
         level: 1,
         icon: '',
       },
     });
 
-    const childMenus = Array.isArray(parent) ? Object.values(parent)[0] : [];
+    
+    const childMenus = Array.isArray( Object.values(parent)[0]) ? Object.values(parent)[0] : [];
+    // console.log( Object.values(parent), 'childMenus-length')
+    console.log(childMenus.length, 'childMenus-length')
+   if(childMenus.length > 0) {
     for (const child of childMenus) {
+      console.log(child, 'child')
       await prisma.menuPermission.create({
         data: {
           parentId: labelMenu.id,
@@ -101,6 +109,7 @@ async function main() {
         },
       });
     }
+   }
     
   }
 
