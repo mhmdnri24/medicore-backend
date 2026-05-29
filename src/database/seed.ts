@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
 import * as bcrypt from 'bcrypt';
 import * as dotenv from 'dotenv';
-import { Pool } from 'node_modules/@types/pg/index.mjs';
+import { Pool } from 'pg';
 
 dotenv.config();
 

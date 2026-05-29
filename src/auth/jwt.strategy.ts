@@ -13,13 +13,19 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: configService.get<string>('JWT_SECRET') || 'default_secret',
+      secretOrKey: configService.get<string>(
+        'JWT_SECRET',
+        'medicore_jwt_super_secret_key_2024',
+      ),
     });
   }
 
-  async validate(payload: { sub: string; employeeId: string; role: string }) {
+  async validate(payload: { sub: number | string; employeeId: string }) {
+    const userId =
+      typeof payload.sub === 'number' ? payload.sub : Number(payload.sub);
+
     const user = await this.prisma.user.findUnique({
-      where: { id: payload.sub },
+      where: { id: userId },
     });
 
     if (!user || !user.isActive) {
