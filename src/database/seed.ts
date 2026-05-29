@@ -56,29 +56,133 @@ async function main() {
   });
 
   const parentMenu = [
-    {'Main':[
     {
-      parentId: null,
-      name: 'view:dashboard',
-      description: 'Can view dashboard',
-      level: 1,
-      icon: 'dashboard',
+      Main: [
+        {
+          name: 'view:dashboard',
+          description: 'Can view dashboard',
+          level: 2,
+          icon: 'home',
+        },
+        {
+          name: 'view:registration',
+          description: 'Can view registration',
+          level: 2,
+          icon: 'id-card',
+        },
+        {
+          name: 'view:igd',
+          description: 'Can view IGD',
+          level: 2,
+          icon: 'siren',
+        },
+        {
+          name: 'view:patient-services',
+          description: 'Can view patient services',
+          level: 2,
+          icon: 'syringe',
+        },
+        {
+          name: 'view:laboratory',
+          description: 'Can view laboratory',
+          level: 2,
+          icon: 'flask-conical-off',
+        },
+        {
+          name: 'view:radiology',
+          description: 'Can view radiology',
+          level: 2,
+          icon: 'microscope',
+        },
+      ],
     },
     {
-      parentId: null,
-      name: 'view:dashboard',
-      description: 'Can view dashboard',
-      level: 1,
-      icon: 'dashboard',
+      'Master Data': [
+        {
+          name: 'view:drug',
+          description: 'Can view drug',
+          level: 2,
+          icon: 'tablets',
+        },
+        {
+          name: 'view:uom',
+          description: 'Can view unit of measure',
+          level: 2,
+          icon: 'scale',
+        },
+        {
+          name: 'view:category',
+          description: 'Can view category',
+          level: 2,
+          icon: 'grid-2x2-plus',
+        },
+        {
+          name: 'view:doctor',
+          description: 'Can view doctor',
+          level: 2,
+          icon: 'stethoscope',
+        },
+        {
+          name: 'view:nurse',
+          description: 'Can view nurse',
+          level: 2,
+          icon: 'users',
+        },
+        {
+          name: 'view:staff',
+          description: 'Can view staff',
+          level: 2,
+          icon: 'users-round',
+        },
+        {
+          name: 'view:procedure',
+          description: 'Can view procedure',
+          level: 2,
+          icon: 'syringe',
+        },
+        {
+          name: 'view:ancillary',
+          description: 'Can view ancillary',
+          level: 2,
+          icon: 'microscope',
+        },
+        {
+          name: 'view:insurer',
+          description: 'Can view insurer',
+          level: 2,
+          icon: 'credit-card',
+        },
+        {
+          name: 'view:supplier',
+          description: 'Can view supplier',
+          level: 2,
+          icon: 'van',
+        },
+      ],
     },
     {
-      parentId: null,
-      name: 'view:dashboard',
-      description: 'Can view dashboard',
-      level: 1,
-      icon: 'dashboard',
+      Settings: [
+        {
+          name: 'view:user',
+          description: 'Can view user',
+          level: 2,
+          icon: 'user',
+        },
+        {
+          name: 'view:role',
+          description: 'Can view role',
+          level: 2,
+          icon: 'shield',
+        },
+        {
+          name: 'view:settings',
+          description: 'Can view settings',
+          level: 2,
+          icon: 'columns-settings',
+        },
+      ],
     },
-  ]}, { 'Master Data': [] }, { 'Settings': [] }];
+  ];
 
   for (const parent of parentMenu) {
     // console.log(Object.values(parent)[0], 'parent')
