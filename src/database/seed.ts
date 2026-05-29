@@ -198,11 +198,8 @@ async function main() {
 
     
     const childMenus = Array.isArray( Object.values(parent)[0]) ? Object.values(parent)[0] : [];
-    // console.log( Object.values(parent), 'childMenus-length')
-    console.log(childMenus.length, 'childMenus-length')
    if(childMenus.length > 0) {
     for (const child of childMenus) {
-      console.log(child, 'child')
       await prisma.menuPermission.create({
         data: {
           parentId: labelMenu.id,
@@ -216,6 +213,15 @@ async function main() {
    }
     
   }
+
+  const allMenus = await prisma.menuPermission.findMany({ select: { id: true } });
+  await prisma.roleMenuPermission.createMany({
+    data: allMenus.map((menu) => ({
+      roleId: role.id,
+      menuPermissionId: menu.id,
+    })),
+    skipDuplicates: true,
+  });
 
   console.log('✅ Seed complete: admin_001 / Admin@1234');
 }
