@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { MenuModule } from './menu/menu.module';
+import { UsersModule } from './users/users.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 
 @Module({
@@ -11,6 +12,7 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware';
     PrismaModule,
     AuthModule,
     MenuModule,
+    UsersModule,
   ],
 })
 export class AppModule implements NestModule {

@@ -63,18 +63,21 @@ async function main() {
           description: 'Can view dashboard',
           level: 2,
           icon: 'home',
+          path: '/dashboard'
         },
         {
           name: 'view:registration',
           description: 'Can view registration',
           level: 2,
           icon: 'id-card',
+          path: '/registration'
         },
         {
           name: 'view:igd',
           description: 'Can view IGD',
           level: 2,
           icon: 'siren',
+          path: '/igd'
         },
         {
           name: 'view:patient-services',
@@ -96,6 +99,7 @@ async function main() {
         },
       ],
     },
+
     {
       MasterData: [
         {
@@ -167,18 +171,21 @@ async function main() {
           description: 'Can view user',
           level: 2,
           icon: 'user',
+          path: '/setting/users'
         },
         {
           name: 'view:role',
           description: 'Can view role',
           level: 2,
           icon: 'shield',
+          path: '/setting/role'
         },
         {
           name: 'view:settings',
           description: 'Can view settings',
           level: 2,
           icon: 'columns-settings',
+          path: '/setting'
         },
       ],
     },
@@ -207,6 +214,7 @@ async function main() {
           description: child.description,
           level: child.level,
           icon: child.icon,
+          path: child.path
         },
       });
     }
