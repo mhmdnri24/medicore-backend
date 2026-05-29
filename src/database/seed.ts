@@ -97,7 +97,7 @@ async function main() {
       ],
     },
     {
-      'Master Data': [
+      MasterData: [
         {
           name: 'view:drug',
           description: 'Can view drug',
