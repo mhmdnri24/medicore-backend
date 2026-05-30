@@ -178,7 +178,7 @@ async function main() {
           description: 'Can view role',
           level: 2,
           icon: 'shield',
-          path: '/setting/role'
+          path: '/setting/roles'
         },
         {
           name: 'view:settings',
