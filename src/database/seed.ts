@@ -185,7 +185,7 @@ async function main() {
           description: 'Can view settings',
           level: 2,
           icon: 'columns-settings',
-          path: '/setting'
+          path: '/setting/system'
         },
       ],
     },
