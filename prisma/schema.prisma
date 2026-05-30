@@ -71,3 +71,15 @@ model RoleMenuPermission {
   @@id([roleId, menuPermissionId])  
   @@map("role_menu_permissions")
 }
+
+
+model Setting {
+  id  Int @id @default(autoincrement())
+  app_name  String
+  logo String?
+  pavicon String?
+  version String
+  time_zone String?
+
+  @@map("settings")
+}
